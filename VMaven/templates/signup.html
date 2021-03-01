@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+    <div class="bg-image">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <article class="card-body mx-auto">
+                            <h4 class="card-title mt-3 text-center">Create Account</h4>
+                            <p class="text-center">Get started with your free account</p>
+                            <p>
+                                <a href="" class="btn btn-block btn-twitter"> <i class="fa fa-twitter"></i> &nbsp; Login via Twitter</a>
+                                <a href="" class="btn btn-block btn-facebook"> <i class="fa fa-facebook-f"></i> &nbsp; Login via facebook</a>
+                            </p>
+                            <form method='POST' action='signin.html'>
+                                {% csrf_token %}   
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    {{ form.first_name }}
+                                </div> <!-- form-group// -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    {{ form.last_name }}
+                                </div> <!-- form-group// -->
+                                    <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    {{ form.username }}
+                                </div> <!-- form-group// -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                    </div>
+                                    {{ form.email }}
+                                </div> <!-- form-group// -->
+                                {% comment %} <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                    </div>
+                                    <select class="custom-select" style="max-width: 120px;">
+                                        <option selected="">+971</option>
+                                        <option value="1">+972</option>
+                                        <option value="2">+198</option>
+                                        <option value="3">+701</option>
+                                    </select>
+                                        {{ form.phone }}
+                                </div> <!-- form-group// --> {% endcomment %}
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    {{ form.password1 }}
+                                </div> <!-- form-group// -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    {{ form.password2 }}
+                                </div> <!-- form-group// --> 
+
+                                {{form.errors}}     
+                                                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+                                </div> <!-- form-group// -->      
+                                <p class="text-center">Have an account? <a href="signin.html">Log In</a> </p>                                                                 
+                            </form>
+                        </article>
+                    </div> <!-- card.// -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Query all input data
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'First Name..'
+        form_fields[2].placeholder = 'Last Name..'
+        form_fields[3].placeholder = 'Username..'
+        form_fields[4].placeholder = 'Email..'
+        form_fields[5].placeholder = 'Enter password..'
+        form_fields[6].placeholder = 'Re-enter password..'
+
+        for (var field in form_fields) {
+            form_fields[field].className += ' form_control'
+        }
+    </script>
+{% endblock %}
