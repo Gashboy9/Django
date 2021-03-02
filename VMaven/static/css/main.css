@@ -102,3 +102,7 @@ img {
     width: 100%;
     margin: auto;
 }
+.card-image-top {
+    width: 100%;
+    height: 80%;
+}

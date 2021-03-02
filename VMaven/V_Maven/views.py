@@ -72,7 +72,7 @@ def signup(request):
                 user.save()
 
                 email_subject = 'Activate your account'
-                email_body = ''
+                email_body = 'This is Drone'
                 email = EmailMessage(
                     email_subject,
                     email_body,
@@ -82,7 +82,7 @@ def signup(request):
                     # reply_to=['another@example.com'],
                     # headers={'Message-ID': 'foo'}
                 )
-
+                email.send(fail_silently=False)
                 messages.success(request, "Account was created for " + username)
                 login(request, user)
                 return redirect("signin.html")
